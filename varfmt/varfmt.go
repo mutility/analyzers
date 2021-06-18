@@ -83,7 +83,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			case *ast.SelectorExpr:
 				obj := selobj(pass.TypesInfo, callfun)
 				checkarg = fmtarg(printers, obj)
-			case *ast.CallExpr, *ast.TypeAssertExpr, *ast.ParenExpr, *ast.FuncLit, *ast.ArrayType:
+			case *ast.CallExpr, *ast.TypeAssertExpr, *ast.ParenExpr, *ast.IndexExpr:
+			case *ast.FuncLit, *ast.ArrayType, *ast.InterfaceType, *ast.MapType, *ast.ChanType, *ast.StructType:
 			default:
 				pt("unhandled callfun "+pp(n.Fun), n.Fun)
 				return
@@ -251,13 +252,13 @@ func typeobj(obj types.Object) bool {
 }
 
 func typeexpr(ti *types.Info, x ast.Expr) bool {
-	pt(pp(x), x)
 	if sel, ok := x.(*ast.SelectorExpr); ok {
 		x = sel.Sel
 	}
 	if id, ok := x.(*ast.Ident); ok {
 		return typeobj(ti.ObjectOf(id))
 	}
+	pt("typeexpr "+pp(x), x)
 	return false
 }
 

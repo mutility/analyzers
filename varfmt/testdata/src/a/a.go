@@ -76,6 +76,22 @@ func modifiedpassthrough(format string, args ...interface{}) {
 	fmt.Sprintf(format, args...) // want "variable `format` used for fmt.Sprintf format parameter"
 }
 
+// missedpassthrough isn't identified because it takes a slice instead of a variadic.
+// TODO: handle this case in varfmt?
+func missedpassthrough(format string, args []interface{}) {
+	fmt.Sprintf(format, args...) // want "variable `format` used for fmt.Sprintf format parameter"
+}
+
 func complicated(a, b, format string, args ...interface{}) {
 	fmt.Sprintf(format, args...)
+}
+
+// these used to result in warnings from pt(pp(...))
+// run tests with -v and look for 'unhandled'
+func handled(arr []func(...interface{})) {
+	arr[0](v1)                      // *ast.IndexExpr
+	arr[1](interface{}(v3))         // *ast.InterfaceType
+	_ = map[string]interface{}(nil) // *ast.MapType
+	_ = chan int(nil)               // *ast.ChanType
+	_ = struct{}(struct{}{})        // *ast.StructTyp
 }
