@@ -1,0 +1,1 @@
+{"github.com/mutility/analyzers/cmd/mutility-analyzers/main.go":{"Count":1,"Covered":0},"github.com/mutility/analyzers/cmd/varfmt/main.go":{"Count":1,"Covered":0},"github.com/mutility/analyzers/varfmt/varfmt.go":{"Count":116,"Covered":102}}
