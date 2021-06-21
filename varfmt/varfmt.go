@@ -22,12 +22,20 @@ accidental use of potentially unvetted strings can result in ugly tokens like
 all uses of variables as format strings, except those that are merely pass-
 throughs in a wrapper of a printf-like function.`
 
+var noArgs bool
+
+func init() {
+	Analyzer.Flags.BoolVar(&noArgs, "no-args", false, "suppress varfmt reports when formatted args are passed")
+	// allow overriding printf flags
+	funcs := printf.Analyzer.Flags.Lookup("funcs")
+	Analyzer.Flags.Var(funcs.Value, funcs.Name, funcs.Usage)
+}
+
 var Analyzer = &analysis.Analyzer{
 	Name:     "varfmt",
 	Doc:      doc,
 	Requires: []*analysis.Analyzer{inspect.Analyzer, printf.Analyzer},
 	Run:      run,
-	Flags:    printf.Analyzer.Flags, // allow overriding printf flags
 }
 
 func run(pass *analysis.Pass) (interface{}, error) {
@@ -91,6 +99,9 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			}
 
 			if checkarg < 0 {
+				return
+			}
+			if noArgs && len(n.Args)-1 > checkarg {
 				return
 			}
 

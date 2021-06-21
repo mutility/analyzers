@@ -3,6 +3,7 @@ package a
 import (
 	"a/pkg"
 	"fmt"
+	"os"
 )
 
 var (
@@ -40,6 +41,7 @@ func bad() {
 	fmt.Sprintf(lookup[false])                                        // want "variable `lookup.false.` used for fmt.Sprintf format parameter"
 	fmt.Sprintf(map[bool]string{false: "false", true: "true"}[false]) // want "non-constant expression used for fmt.Sprintf format parameter"
 	complicated(v1, v2, v3)                                           // want "variable `v3` used for complicated format parameter"
+	fmt.Fprintf(os.Stdout, os.Args[0])                                // want "variable `os.Args.0.` used for fmt.Fprintf format parameter"
 }
 
 func goodf(format string, args ...interface{}) {
@@ -62,6 +64,7 @@ func goodf(format string, args ...interface{}) {
 	fmt.Sprintf(lc)
 	fmt.Sprintf(pkg.C)
 	complicated(v1, v2, c3)
+	fmt.Fprintf(os.Stdout, "%s", os.Args[0])
 }
 
 func passthrough(format string, args ...interface{}) {
