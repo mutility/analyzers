@@ -25,8 +25,16 @@ jobs:
         run: go test ./...
 
       - name: coverpkg
-        uses: mutility/coverpkg@v1
+        uses: mutility/coverpkg@forked-pr
         with:
           token: ${{ github.token }}
           groupby: file
           comment: replace
+
+      - name: Store Coverage
+        id: coverpkg-artifact
+        if: ${{ steps.coverpkg.outputs.comment-failed == true }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverpkg
+          path: ${{ steps.coverpkg.outputs.artifacts }}/
