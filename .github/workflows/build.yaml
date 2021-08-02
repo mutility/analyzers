@@ -24,16 +24,17 @@ jobs:
       - name: test
         run: go test ./...
 
-      - name: coverpkg
-        uses: mutility/coverpkg@forked-pr
+      - id: coverpkg
+        name: Calculate Coverage
+        uses: mutility/coverpkg@v1
         with:
           token: ${{ github.token }}
           groupby: file
           comment: replace
 
       - name: Store Coverage
-        id: coverpkg-artifact
-        if: ${{ steps.coverpkg.outputs.comment-failed == true }}
+        id: coverpkg-artifacts
+        if: ${{ steps.coverpkg.outputs.comment-failed == 403 }}
         uses: actions/upload-artifact@v2
         with:
           name: coverpkg
