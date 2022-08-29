@@ -26,4 +26,4 @@ jobs:
           go-version: '^1.18'
 
       - name: build
-        run: go build ./cmd/mutility-analyzers && go build ./cmd/varfmt
+        run: go build ./cmd/mutility-analyzers && go build -o variable-format ./cmd/varfmt
