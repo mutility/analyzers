@@ -1,4 +1,5 @@
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
+github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/mutility/unused-results v1.0.1 h1:LGzy5aIq3eKt2Q2nLzD1bbD5ZBu+9WEgn5XLirZZ/Vg=
 github.com/mutility/unused-results v1.0.1/go.mod h1:ekqpHI58MtW+TAXTe8RB632C9RhpRQcUPBJz8bdmPbM=
 github.com/mutility/variable-format v1.0.0 h1:dAYoPnQX8pxLQI7E6kGBsyVK2oprJ+QA/BCSJ3KJbXY=
