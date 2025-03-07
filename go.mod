@@ -1,7 +1,6 @@
 module github.com/mutility/analyzers
 
-go 1.22.0
-toolchain go1.23.7
+go 1.23.0
 
 require (
 	github.com/mutility/unused-results v1.0.1
