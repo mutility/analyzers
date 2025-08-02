@@ -1,5 +1,9 @@
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+github.com/mutility/parameter-swap v1.0.0 h1:GFfiWp/gbdRCRNpeRL9co7orDRcUU5gUtQZssnhb+I8=
+github.com/mutility/parameter-swap v1.0.0/go.mod h1:MH81eTL3BTcHYxnVBQ2LqmATVJDGeqbeRYD14GQG30s=
+github.com/mutility/undeferred v1.0.0 h1:GowgbaD7aVfUn39pe3bson4b/ucfz2QS2SPJf/7WZA4=
+github.com/mutility/undeferred v1.0.0/go.mod h1:LXQyUITrwLyY13WBERF/jDlI9JfYM6cgbuPm3EBFicY=
 github.com/mutility/unused-results v1.0.1 h1:LGzy5aIq3eKt2Q2nLzD1bbD5ZBu+9WEgn5XLirZZ/Vg=
 github.com/mutility/unused-results v1.0.1/go.mod h1:ekqpHI58MtW+TAXTe8RB632C9RhpRQcUPBJz8bdmPbM=
 github.com/mutility/variable-format v1.0.0 h1:dAYoPnQX8pxLQI7E6kGBsyVK2oprJ+QA/BCSJ3KJbXY=

@@ -15,6 +15,8 @@ Most of the included analyzers offer some level of configuration through flags.
 
 - [Unused Results](https://github.com/mutility/unused-results): report results that appear to always be ignored
 - [Variable Format](https://github.com/mutility/variable-format): report non-const, non-literal strings passed to printf-like functions
+- [Parameter Swap](https://github.com/mutility/parameter-swap): report arguments that appear to be swapped
+- [Undeferred](https://github.com/mutility/undeferred): report named returns that appear to be misused
 
 ## Backwards Compatibility
 
