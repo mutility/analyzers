@@ -1,29 +1,24 @@
-name: CI
+name: "CI"
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches:
-    - v*
+      - main
   pull_request:
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - main
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-go@v7
-        with:
-          go-version: 'stable'
-
-      - name: build
-        run: go build ./cmd/mutility-analyzers && go build -o variable-format ./cmd/varfmt
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        go: [ 'stable' ]
+    uses: mutility/ci/.github/workflows/go-test.yaml@main
+    with:
+      show-coverage: off
