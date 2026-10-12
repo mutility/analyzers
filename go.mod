@@ -7,7 +7,7 @@ require (
 	github.com/mutility/undeferred v1.0.0
 	github.com/mutility/unused-results v1.0.1
 	github.com/mutility/variable-format v1.0.0
-	golang.org/x/tools v0.50.0
+	golang.org/x/tools v0.51.0
 )
 
 require (
